@@ -61,7 +61,19 @@ class Home extends Component {
 
  }
  test(){
-	
+	return fetch("http://192.168.1.133:7916/register",{
+		method: 'POST',
+		body:{
+			id: 123456789,
+			ip:  "196.168.1.149"
+		}
+	}).then((response)=>{
+		return response.json()
+	}).then((res)=>{
+		alert(JSON.stringify(res));
+	}).catch((error)=>{
+		alert(error);
+	})
  }
  
 	render() {
