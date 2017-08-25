@@ -97,6 +97,7 @@ import statusBarColor from "./themes/variables";
 
 import Followers from "./components/followers";
 import Following from "./components/Following";
+import YokMe from "./components/followme";
 class AppNavigator extends Component {
   render() {
     return ;

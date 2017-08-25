@@ -82,6 +82,7 @@ import AdvancedDeck from "./components/deckswiper/advanced";
 import Followers from "./components/followers";
 import Following from "./components/following";
 import AddFollower from "./components/addFollower";
+import YokMe from "./components/followme";
 
 const AppNavigator = StackNavigator(
     {
@@ -172,6 +173,7 @@ const AppNavigator = StackNavigator(
         IconActionSheet: { screen: IconActionSheet },
         Followers: { screen: Followers },
         Following: { screen: Following },
+        YokMe: { screen: YokMe },
         AddFollower: { screen: AddFollower },
     },
     {

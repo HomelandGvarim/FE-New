@@ -36,6 +36,11 @@ const datas = [
     route: "Following",
     icon: "paper",
     bg: "#37BCBB"
+  },{
+    name: "YokMe",
+    route: "YokMe",
+    icon: "paper",
+    bg: "#37BCBB"
   },
   
 ];

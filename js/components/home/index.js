@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, View, StatusBar,TouchableHighlight,TouchableOpacity  } from "react-native";
+import { Image, View, StatusBar,TouchableHighlight,TouchableOpacity ,Alert } from "react-native";
 
 import { Container, Button, H3, Text, Header, Title, Body, Left, Right ,Toast } from "native-base";
 
@@ -59,22 +59,29 @@ class Home extends Component {
 		duration:2000
 	})
 	//this.test()
-	let a = 'http://localhost:8081';
-	this.socket = SocketIOClient(a);
-		this.socket.on("channel-name",(message) => {
-			alert(message);
-	 });
+	
  }
 
  _onNotOkButtonClick(){
-	  Toast.show({
+	 Alert.alert(
+  'Are You Sure ?',
+  'This will send sos to all subscribers!',
+  [
+    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+    {text: 'OK', onPress: () => this.toasterError()},
+  ],
+  { cancelable: false }
+)
+ }
+
+ toasterError(){
+	 Toast.show({
 		text:"SOS Sent to followers!",
 		type:"danger",
 		duration:2000,
 		position:'bottom'
 	})
 	//this.test()
-
  }
  test(){
 	return fetch("http://192.168.1.133:7916/register",{

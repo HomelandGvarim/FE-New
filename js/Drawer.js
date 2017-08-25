@@ -38,6 +38,7 @@ import Actionsheet from "./components/actionsheet";
 
 import Followers from "./components/followers";
 import Following from "./components/following";
+import YokMe from "./components/followme";
 
 const DrawerExample = DrawerNavigator(
   {
@@ -72,7 +73,8 @@ const DrawerExample = DrawerNavigator(
     Toast: { screen: Toast },
     Actionsheet: { screen: Actionsheet },
     Followers: { screen: Followers },
-    Following: { screen: Following }
+    Following: { screen: Following },
+    YokMe: { screen: YokMe },
   },
   {
     initialRouteName: "Home",
