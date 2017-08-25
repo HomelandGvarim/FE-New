@@ -37,7 +37,7 @@ const datas = [
   },
   {
     img: sanket,
-    name: "Kumar Sanket"
+    name: "Kumar"
   },
   {
     img: megha,
@@ -45,15 +45,15 @@ const datas = [
   },
   {
     img: atul,
-    name: "Atul Ranjan"
+    name: "Atul"
   },
   {
     img: saurabh,
-    name: "Saurabh Sahu"
+    name: "Saurabh"
   },
   {
     img: varun,
-    name: "Varun Sahu"
+    name: "Varun"
   }
 ];
 
@@ -63,7 +63,7 @@ class Followers extends Component {
       <Container style={styles.container}>
         <Header androidStatusBarColor="#323232" style={{backgroundColor:"#37BCBB"}}>
           <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
+            <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
               <Icon name="arrow-back" />
             </Button>
           </Left>

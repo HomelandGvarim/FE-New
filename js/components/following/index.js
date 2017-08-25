@@ -40,11 +40,12 @@ const datas = [
     name: "Itamar",
     note: "I'm ok, :)",
     time: "3:43 pm",
+    notificationTime:"",
     isOk: true
   },
   {
     img: sanket,
-    name: "Kumar Sanket",
+    name: "Kumar",
     note: "Every thing is ok..",
     time: "1:12 pm",
     isOk: true
@@ -52,27 +53,27 @@ const datas = [
   {
     img: megha,
     name: "Megha",
-    note: "There is no issues :)",
+    note: "There are no issues :)",
     time: "10:03 am",
     isOk: true
   },
   {
     img: atul,
-    name: "Atul Ranjan",
+    name: "Atul",
     note: "Dont worry!!",
     time: "5:47 am",
     isOk: true
   },
   {
     img: saurabh,
-    name: "Saurabh Sahu",
+    name: "Saurabh",
     note: "I need help",
     time: "11:11 pm",
     isOk: false
   },
   {
     img: varun,
-    name: "Varun Sahu",
+    name: "Varun",
     note: "Help me",
     time: "8:54 pm",
     isOk: false
@@ -84,29 +85,40 @@ class Following extends Component {
     super(props);
 
     this.test = this.test.bind(this);
+    this.setTime = this.setTime.bind(this);
   }
 
-  test() {
+  test(user) {
+    Alert("not alerting" + user.name);
+  }
+
+  setTime(user) {
     try {
-      const { action, hour, minute } = TimePickerAndroid.open({
+      const time = TimePickerAndroid.open({
         hour: 14,
         minute: 0,
         is24Hour: false // Will display '2 PM'
-      });
+      }).then((onFulfill, onReject)=>
+    {
+        alert(onFulfill.hour);
       if (action !== TimePickerAndroid.dismissedAction) {
         // Selected hour (0-23), minute (0-59)
       }
+    });
     } catch ({ code, message }) {
       console.warn("Cannot open time picker", message);
-    }
+    } 
   }
 
   render() {
     return (
       <Container style={styles.container}>
-        <Header androidStatusBarColor='#323232' style={{backgroundColor:"#37BCBB"}}>
+        <Header
+          androidStatusBarColor="#323232"
+          style={{ backgroundColor: "#37BCBB" }}
+        >
           <Left>
-            <Button transparent  onPress={() => this.props.navigation.goBack()}>
+            <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
               <Icon name="arrow-back" />
             </Button>
           </Left>
@@ -137,45 +149,36 @@ class Following extends Component {
                   </Button>
                 }
                 left={
-                  <Button danger onPress={() => alert("Remove")}>
-                    <Icon active name="trash" />
+                  <Button
+                    style={{ backgroundColor: "#646464" }}
+                    onPress={(data)=>this.setTime(data)}
+                  >
+                    <Icon active name="settings" />
                   </Button>
                 }
                 body={
-                  <View>
-                    <Left
-                      style={{
-                        alignSelf: "flex-start",
-                        flexDirection: "row"
-                      }}
-                    >
+                  <View style={{ flexDirection: "row" }}>
+                    <Left style={{ flexDirection: "column" }}>
                       <Thumbnail small source={data.img} />
-                      <Text style={{ marginLeft: 10 }}>
+
+                      <Text>
                         {data.name}
                       </Text>
                     </Left>
 
-                    <Body style={{ flexDirection: "column" }}>
-                      <Text numberOfLines={1} note>
+                    <Body style={{ flexDirection: "row", alignSelf: "center" }}>
+                      <Text note>
+                        {data.note}
+                      </Text>
+                    </Body>
+                    <Right style={{ flexDirection: "column" }}>
+                      <Text note>
+                        {data.time}
                         {data.isOk
                           ? <Thumbnail small source={BlueV} />
                           : <Thumbnail small source={RedX} />}
-                        {data.note}
-
-                        <Text
-                          note
-                          style={{
-                            flexDirection: "column",
-                            alignSelf: "flex-end"
-                          }}
-                        >
-                          {data.time}
-                        </Text>
                       </Text>
-                      <Button onPress={this.test} style={{backgroundColor:"#37BCBB"}}>
-                        <Text>Set Time</Text>
-                      </Button>
-                    </Body>
+                    </Right>
                   </View>
                 }
               />}
