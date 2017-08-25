@@ -98,14 +98,11 @@ class YokMe extends Component {
 
   test() {
     try {
-      const { action, hour, minute } = TimePickerAndroid.open({
-        hour: 14,
-        minute: 0,
-        is24Hour: false // Will display '2 PM'
-      });
-      if (action !== TimePickerAndroid.dismissedAction) {
-        // Selected hour (0-23), minute (0-59)
-      }
+      const time = TimePickerAndroid.open({
+        is24Hour: true, // Will display '2 PM'
+        hour: 0,
+        minute: 0
+      })
     } catch ({ code, message }) {
       console.warn("Cannot open time picker", message);
     }
