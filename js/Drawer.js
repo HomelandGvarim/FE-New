@@ -10,7 +10,6 @@ import Footer from "./components/footer/";
 import NHBadge from "./components/badge/";
 import NHButton from "./components/button/";
 import NHCard from "./components/card/";
-import NHCheckbox from "./components/checkbox/";
 import NHDeckSwiper from "./components/deckswiper/";
 import NHFab from "./components/fab/";
 import NHForm from "./components/form/";
@@ -49,7 +48,6 @@ const DrawerExample = DrawerNavigator(
     NHBadge: { screen: NHBadge },
     NHButton: { screen: NHButton },
     NHCard: { screen: NHCard },
-    NHCheckbox: { screen: NHCheckbox },
     NHDeckSwiper: { screen: NHDeckSwiper },
     NHFab: { screen: NHFab },
     NHForm: { screen: NHForm },

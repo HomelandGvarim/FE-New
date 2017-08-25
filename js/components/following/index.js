@@ -40,7 +40,7 @@ const datas = [
     name: "Itamar",
     note: "I'm ok, :)",
     time: "3:43 pm",
-    notificationTime:"",
+    notificationTime: "",
     isOk: true
   },
   {
@@ -84,30 +84,25 @@ class Following extends Component {
   constructor(props) {
     super(props);
 
-    this.test = this.test.bind(this);
     this.setTime = this.setTime.bind(this);
-  }
-
-  test(user) {
-    Alert("not alerting" + user.name);
   }
 
   setTime(user) {
     try {
       const time = TimePickerAndroid.open({
-        hour: 14,
-        minute: 0,
-        is24Hour: false // Will display '2 PM'
-      }).then((onFulfill, onReject)=>
-    {
-        alert(onFulfill.hour);
-      if (action !== TimePickerAndroid.dismissedAction) {
-        // Selected hour (0-23), minute (0-59)
-      }
-    });
+        is24Hour: true, // Will display '2 PM'
+        hour: 0,
+        minute: 0
+      }).then((onFulfill, onReject) => {
+        let myDateSec = (onFulfill.hour * 60 + onFulfill.minute) * 60;
+
+        setTimeout(() => {
+          alert("Itamar didn't YOK you, you should check him.");
+        }, myDateSec * 1000);
+      });
     } catch ({ code, message }) {
       console.warn("Cannot open time picker", message);
-    } 
+    }
   }
 
   render() {
@@ -118,7 +113,10 @@ class Following extends Component {
           style={{ backgroundColor: "#37BCBB" }}
         >
           <Left>
-            <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
+            <Button
+              transparent
+              onPress={() => this.props.navigation.navigate("DrawerOpen")}
+            >
               <Icon name="arrow-back" />
             </Button>
           </Left>
@@ -151,7 +149,7 @@ class Following extends Component {
                 left={
                   <Button
                     style={{ backgroundColor: "#646464" }}
-                    onPress={(data)=>this.setTime(data)}
+                    onPress={data => this.setTime(data)}
                   >
                     <Icon active name="settings" />
                   </Button>
