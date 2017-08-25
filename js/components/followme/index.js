@@ -113,15 +113,7 @@ class YokMe extends Component {
 
 
   _onAddYok(){
-        Toast.show({
-		text:"Yok Me Added!",
-		type:"success",
-		duration:2000,
-		position:'bottom'
-    })
-    setTimeout(()=>{
-        this.props.navigation.navigate("Home");
-    },1000)
+        this.test();
     
   }
   render() {
