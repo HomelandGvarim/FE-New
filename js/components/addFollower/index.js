@@ -19,7 +19,7 @@ import {
   Body
 } from "native-base";
 
-import styles from "./styles";
+import styles from "./style";
 
 const pratik = require("../../../img/contacts/pratik.png");
 const sanket = require("../../../img/contacts/sanket.png");
@@ -32,32 +32,24 @@ const RedX = require("../../../img/RedX.png");
 
 const datas = [
   {
-    img: pratik,
-    name: "Itamar"
-  },
-  {
     img: sanket,
-    name: "Kumar Sanket"
-  },
-  {
-    img: megha,
-    name: "Megha"
+    name: "Omri"
   },
   {
     img: atul,
-    name: "Atul Ranjan"
+    name: "Amos"
   },
   {
     img: saurabh,
-    name: "Saurabh Sahu"
+    name: "Daniel"
   },
   {
     img: varun,
-    name: "Varun Sahu"
+    name: "Yuval"
   }
 ];
 
-class Followers extends Component {
+class AddFollower extends Component {
   render() {
     return (
       <Container style={styles.container}>
@@ -68,7 +60,7 @@ class Followers extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Followers</Title>
+            <Title>Contacts</Title>
           </Body>
           <Right />
         </Header>
@@ -82,10 +74,15 @@ class Followers extends Component {
                   <Thumbnail small source={data.img} />
                 </Left>
                 <Body>
-                  <Text>
+                  <Text style={{marginTop:22}}>
                     {data.name}
                   </Text>
                 </Body>
+                <Right>
+                    <Button onPress={() => alert("Added contact")}>
+                    <Icon active name="eye" />
+                  </Button>
+                </Right>
               </ListItem>}
           />
         </Content>
@@ -94,4 +91,4 @@ class Followers extends Component {
   }
 }
 
-export default Followers;
+export default AddFollower;

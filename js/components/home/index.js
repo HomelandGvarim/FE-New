@@ -33,7 +33,8 @@ class Home extends Component {
 		super(props,context);
 		this.state = {
 			oklogo: oklogo,
-			notOklogo:notOklogo
+			notOklogo:notOklogo,
+			//socket = SocketIOClient
 		}
 		
 		
@@ -51,17 +52,18 @@ class Home extends Component {
 	
 	
 	 _onOkButtonClick(){
-		 Toast.show({
-                text: "Wrong password!",
-                buttonText: "Okay"
-              });
 	//ToastAndroid.showWithGravity("You are Ok!",2,ToastAndroid.BOTTOM);
 	Toast.show({
 		text:"You are Ok!",
 		type:"success",
 		duration:2000
 	})
-	this.test()
+	//this.test()
+	let a = 'http://localhost:8081';
+	this.socket = SocketIOClient(a);
+		this.socket.on("channel-name",(message) => {
+			alert(message);
+	 });
  }
 
  _onNotOkButtonClick(){
@@ -71,7 +73,7 @@ class Home extends Component {
 		duration:2000,
 		position:'bottom'
 	})
-	this.test()
+	//this.test()
 
  }
  test(){

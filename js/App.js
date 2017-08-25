@@ -81,6 +81,7 @@ import AdvancedDeck from "./components/deckswiper/advanced";
 
 import Followers from "./components/followers";
 import Following from "./components/following";
+import AddFollower from "./components/addFollower";
 
 const AppNavigator = StackNavigator(
     {
@@ -171,6 +172,7 @@ const AppNavigator = StackNavigator(
         IconActionSheet: { screen: IconActionSheet },
         Followers: { screen: Followers },
         Following: { screen: Following },
+        AddFollower: { screen: AddFollower },
     },
     {
         initialRouteName: "Drawer",

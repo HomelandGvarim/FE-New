@@ -9,6 +9,8 @@ import {
   Content,
   Button,
   Icon,
+  Tab,
+  Tabs,
   List,
   ListItem,
   Text,
@@ -33,42 +35,42 @@ const RedX = require("../../../img/RedX.png");
 const datas = [
   {
     img: pratik,
-    text: "Itamar",
+    name: "Itamar",
     note: "I'm ok, :)",
     time: "3:43 pm",
     isOk: true
   },
   {
     img: sanket,
-    text: "Kumar Sanket",
+    name: "Kumar Sanket",
     note: "Every thing is ok..",
     time: "1:12 pm",
     isOk: true
   },
   {
     img: megha,
-    text: "Megha",
+    name: "Megha",
     note: "There is no issues :)",
     time: "10:03 am",
     isOk: true
   },
   {
     img: atul,
-    text: "Atul Ranjan",
+    name: "Atul Ranjan",
     note: "Dont worry!!",
     time: "5:47 am",
     isOk: true
   },
   {
     img: saurabh,
-    text: "Saurabh Sahu",
+    name: "Saurabh Sahu",
     note: "I need help",
     time: "11:11 pm",
     isOk: false
   },
   {
     img: varun,
-    text: "Varun Sahu",
+    name: "Varun Sahu",
     note: "Help me",
     time: "8:54 pm",
     isOk: false
@@ -88,7 +90,11 @@ class Following extends Component {
           <Body>
             <Title>Following</Title>
           </Body>
-          <Right />
+          <Right>
+             <Button transparent onPress={() => this.props.navigation.navigate("AddFollower")}>
+              <Icon name="eye" />
+            </Button>
+          </Right>
         </Header>
 
         <Content>
@@ -96,31 +102,46 @@ class Following extends Component {
             dataArray={datas}
             renderRow={data =>
               <SwipeRow
+                onPress={() => alert("Poked ")}
                 rightOpenValue={-75}
+                leftOpenValue={75}
                 right={
-                  <Button danger onPress={() => alert("Poke")}>
+                  <Button onPress={() => alert("Poked")}>
+                    <Icon active name="paper-plane" />
+                  </Button>
+                }
+                left={
+                  <Button danger onPress={() => alert("Remove")}>
                     <Icon active name="trash" />
                   </Button>
                 }
                 body={
-                  <View style={{ flexDirection: "row" }}>
-                    <Left
-                      style={{ alignSelf: "flex-start", flexDirection: "row" }}
-                    >
-                      <Thumbnail small source={data.img} />
+                  <View>
+                    <View style={{ flexDirection: "row" }}>
+                      <Left
+                        style={{
+                          alignSelf: "flex-start",
+                          flexDirection: "row"
+                        }}
+                      >
+                        <Thumbnail small source={data.img} />
+                        <Text style={{ marginLeft: 10 }}>
+                          {data.name}
+                        </Text>
+                      </Left>
+                    </View>
+                    <View style={{ flexDirection: "column" }}>
                       <Text numberOfLines={1} note>
                         {data.isOk
                           ? <Thumbnail small source={BlueV} />
                           : <Thumbnail small source={RedX} />}
                         {data.note}
-                      </Text>
-                    </Left>
 
-                    <Right style={{ alignSelf: "flex-end" }}>
-                      <Text note>
-                        {data.time}
+                        <Text note>
+                          {data.time}
+                        </Text>
                       </Text>
-                    </Right>
+                    </View>
                   </View>
                 }
               />}
