@@ -1,29 +1,51 @@
 {
-	"name": "NativebaseKitchenSink",
-	"version": "2.3.1",
-	"private": true,
-	"devDependencies": {
-		"jest": "20.0.4",
-		"react-test-renderer": "16.0.0-alpha.13"
-	},
-	"scripts": {
-		"start": "react-native start",
-		"android": "react-native run-android",
-		"ios": "react-native run-ios",
-		"test": "node node_modules/jest/bin/jest.js --watch"
-	},
-	"jest": {
-		"preset": "react-native",
-		"transformIgnorePatterns": [
-			"node_modules/(?!react-native|native-base-shoutem-theme)"
-		]
-	},
-	"dependencies": {
-		"color": "~1.0.3",
-		"lodash": "^4.13.1",
-		"native-base": "2.3.1",
-		"react": "16.0.0-alpha.13",
-		"react-native": "0.46.4",
-		"react-navigation": "1.0.0-beta.11"
-	}
+  "name": "NativebaseKitchenSink",
+  "version": "2.3.1",
+  "private": true,
+  "devDependencies": {
+    "jest": "20.0.4",
+    "react-test-renderer": "16.0.0-alpha.13",
+    "rn-nodeify": "^7.0.1"
+  },
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "node node_modules/jest/bin/jest.js --watch"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|native-base-shoutem-theme)"
+    ]
+  },
+  "dependencies": {
+    "color": "~1.0.3",
+    "lodash": "^4.13.1",
+    "native-base": "2.3.1",
+    "process": "^0.11.0",
+    "react": "16.0.0-alpha.13",
+    "react-native": "0.46.4",
+    "react-native-tcp": "^3.1.0",
+    "react-navigation": "1.0.0-beta.11",
+    "readable-stream": "^1.0.33",
+    "socket.io-client": "^2.0.3",
+    "stream-browserify": "^1.0.0"
+  },
+  "react-native": {
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify"
+  },
+  "browser": {
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify"
+  }
 }
