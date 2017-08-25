@@ -19,12 +19,21 @@ import {
   SwipeRow,
   Right,
   Body,
-  Textarea,Item,Label,Input,Toast
+  Textarea,
+  Item,
+  Label,
+  Input,
+  Toast
 } from "native-base";
 
 import { TextInput, TimePickerAndroid} from "react-native";
 
 import styles from "./styles";
+
+
+import TabOne from '../tab/tabOne';
+import TabTwo from '../tab/tabTwo';
+import TabThree from '../tab/tabThree';
 
 const pratik = require("../../../img/contacts/pratik.png");
 const sanket = require("../../../img/contacts/sanket.png");
@@ -117,7 +126,7 @@ class YokMe extends Component {
   }
   render() {
     return (
-      <Container style={styles.container}>
+      <Container >
         <Header androidStatusBarColor='#323232' style={{backgroundColor:"#37BCBB"}}>
           <Left>
             <Button transparent  onPress={() => this.props.navigation.navigate("DrawerOpen")}>
@@ -140,16 +149,7 @@ class YokMe extends Component {
         <Content>
         <Container>
         <View>
-           <Item floatingLabel>
-              <Label>Subscribers</Label>
-              <Input />
-            </Item>
-        </View>
-        <View>
-        <Item floatingLabel>
-              <Label>Name:</Label>
-              <Input />
-            </Item>
+            
 
         </View>
         <View style={{ marginBottom: 80 , marginTop:80}}>
@@ -162,6 +162,8 @@ class YokMe extends Component {
 					</View>
         </Container>
         </Content>
+        
+        
       </Container>
     );
   }
