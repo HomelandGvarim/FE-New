@@ -21,6 +21,8 @@ import {
   Body
 } from "native-base";
 
+import { TimePickerAndroid } from "react-native";
+
 import styles from "./styles";
 
 const pratik = require("../../../img/contacts/pratik.png");
@@ -78,12 +80,33 @@ const datas = [
 ];
 
 class Following extends Component {
+  constructor(props) {
+    super(props);
+
+    this.test = this.test.bind(this);
+  }
+
+  test() {
+    try {
+      const { action, hour, minute } = TimePickerAndroid.open({
+        hour: 14,
+        minute: 0,
+        is24Hour: false // Will display '2 PM'
+      });
+      if (action !== TimePickerAndroid.dismissedAction) {
+        // Selected hour (0-23), minute (0-59)
+      }
+    } catch ({ code, message }) {
+      console.warn("Cannot open time picker", message);
+    }
+  }
+
   render() {
     return (
       <Container style={styles.container}>
-        <Header>
+        <Header androidStatusBarColor='#323232' style={{backgroundColor:"#37BCBB"}}>
           <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
+            <Button transparent  onPress={() => this.props.navigation.goBack()}>
               <Icon name="arrow-back" />
             </Button>
           </Left>
@@ -91,7 +114,10 @@ class Following extends Component {
             <Title>Following</Title>
           </Body>
           <Right>
-             <Button transparent onPress={() => this.props.navigation.navigate("AddFollower")}>
+            <Button
+              transparent
+              onPress={() => this.props.navigation.navigate("AddFollower")}
+            >
               <Icon name="eye" />
             </Button>
           </Right>
@@ -117,31 +143,39 @@ class Following extends Component {
                 }
                 body={
                   <View>
-                    <View style={{ flexDirection: "row" }}>
-                      <Left
-                        style={{
-                          alignSelf: "flex-start",
-                          flexDirection: "row"
-                        }}
-                      >
-                        <Thumbnail small source={data.img} />
-                        <Text style={{ marginLeft: 10 }}>
-                          {data.name}
-                        </Text>
-                      </Left>
-                    </View>
-                    <View style={{ flexDirection: "column" }}>
+                    <Left
+                      style={{
+                        alignSelf: "flex-start",
+                        flexDirection: "row"
+                      }}
+                    >
+                      <Thumbnail small source={data.img} />
+                      <Text style={{ marginLeft: 10 }}>
+                        {data.name}
+                      </Text>
+                    </Left>
+
+                    <Body style={{ flexDirection: "column" }}>
                       <Text numberOfLines={1} note>
                         {data.isOk
                           ? <Thumbnail small source={BlueV} />
                           : <Thumbnail small source={RedX} />}
                         {data.note}
 
-                        <Text note>
+                        <Text
+                          note
+                          style={{
+                            flexDirection: "column",
+                            alignSelf: "flex-end"
+                          }}
+                        >
                           {data.time}
                         </Text>
                       </Text>
-                    </View>
+                      <Button onPress={this.test} style={{backgroundColor:"#37BCBB"}}>
+                        <Text>Set Time</Text>
+                      </Button>
+                    </Body>
                   </View>
                 }
               />}
