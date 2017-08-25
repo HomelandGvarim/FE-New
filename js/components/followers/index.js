@@ -61,7 +61,7 @@ class Followers extends Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Header>
+        <Header androidStatusBarColor="#323232" style={{backgroundColor:"#37BCBB"}}>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
               <Icon name="arrow-back" />

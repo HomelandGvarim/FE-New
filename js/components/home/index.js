@@ -4,7 +4,7 @@ import { Image, View, StatusBar,TouchableHighlight,TouchableOpacity  } from "rea
 import { Container, Button, H3, Text, Header, Title, Body, Left, Right ,Toast } from "native-base";
 
 import styles from "./styles";
-import SocketIOClient from 'socket.io-client';
+
 
 const launchscreenBg = require("../../../img/gray-background.png");
 const launchscreenLogo = require("../../../img/ShieldLogo.png");
@@ -40,12 +40,12 @@ class Home extends Component {
 	}
 	
 	componentWillMount() {
-		let a = 'http://localhost:8081';
-		alert(a);
-		this.socket = SocketIOClient(a);
-		this.socket.on("channel-name",(message) => {
-			alert(message);
-	 });	
+	// 	let a = 'http://localhost:8081';
+	// 	alert(a);
+	// 	this.socket = SocketIOClient(a);
+	// 	this.socket.on("channel-name",(message) => {
+	// 		alert(message);
+	//  });	
 		//  this.socket.connect("http://:8081").send("hi!!!");
 	}
 	
